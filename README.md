@@ -1,3 +1,5 @@
+<img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/BaseMC/javgent/Java CI">
+
 # javgent
 Deobfuscates jars (.class-files) with mappings 
 
