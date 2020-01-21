@@ -1,0 +1,24 @@
+name: Unfixed Branch CI
+
+on: 
+  push:
+    branches-ignore: 
+      - 'master'
+      - 'develop'
+      - 'release*'
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11.0.x
+    - name: Maven Package
+      run: mvn -B clean package -DskipTests
+    - name: Maven Verify
+      run: mvn -B clean verify
