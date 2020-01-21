@@ -9,7 +9,8 @@ on:
 
 jobs:
   test:
-    name: Test
+    name: Test - Build & Unit
+    #no integration tests so far
     runs-on: ubuntu-latest
 
     steps:
