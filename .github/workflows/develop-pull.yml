@@ -1,4 +1,4 @@
-name: Pull to develop
+name: Develop PR CI
 
 on: 
   pull_request:
@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11.0.x
-    - name: Maven Package
+    - name: Build - Maven Package
       run: mvn -B clean package -DskipTests
-    - name: Maven Verify
+    - name: Test - Maven Verify
       run: mvn -B clean verify
