@@ -1,0 +1,28 @@
+name: Release Draft
+
+on: 
+  push:
+    branches: 
+      - master
+
+jobs:
+  update_release_draft:
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create Draft for Release
+        id: create_draft
+        uses: release-drafter/release-drafter@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_draft.outputs.upload_url }} 
+          asset_path: ./target/javgent-standalone.jar
+          asset_name: javgent-standalone.jar
+          asset_content_type: application/java-archive
