@@ -1,4 +1,4 @@
-name: Master Branch CI
+name: Master CI
 
 on: 
   push:
