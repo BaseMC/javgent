@@ -47,5 +47,5 @@ jobs:
             ${{ runner.os }}-maven-:  
       - name: Analyze - SonarCloud Scan
           run: mvn -B clean verify -Psonar -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
