@@ -15,41 +15,41 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup - Java
-      uses: actions/setup-java@v1
-      with:
-        java-version: 11.0.x
-    - name: Build - Maven Package
-      run: mvn -B clean package -DskipTests
-    - name: Test - Maven Verify
-      run: mvn -B clean verify
-    - name: Release - Create Draft for Release
-      id: create_draft
-      uses: release-drafter/release-drafter@v5
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Release - Upload Release Asset
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1.0.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_draft.outputs.upload_url }} 
-        asset_path: ./target/javgent-standalone.jar
-        asset_name: javgent-standalone.jar
-        asset_content_type: application/java-archive
+      - uses: actions/checkout@v1
+      - name: Setup - Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11.0.x
+      - name: Build - Maven Package
+        run: mvn -B clean package -DskipTests
+      - name: Test - Maven Verify
+        run: mvn -B clean verify
+      - name: Release - Create Draft for Release
+        id: create_draft
+        uses: release-drafter/release-drafter@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release - Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_draft.outputs.upload_url }} 
+          asset_path: ./target/javgent-standalone.jar
+          asset_name: javgent-standalone.jar
+          asset_content_type: application/java-archive
   sonar:
     name: SonarCloud Scan
     runs-on: ubuntu-18.04
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup - Java
-      uses: actions/setup-java@v1
-      with:
-        java-version: 11.0.x
-    - name: Analyze - SonarCloud Scan
-      run: mvn -B clean verify -Psonar -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v1
+      - name: Setup - Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11.0.x
+      - name: Analyze - SonarCloud Scan
+        run: mvn -B clean verify -Psonar -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
