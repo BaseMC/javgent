@@ -1,4 +1,8 @@
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/BaseMC/javgent/Java%20CI)](https://github.com/BaseMC/javgent/actions)
+[![Build](https://img.shields.io/github/workflow/status/BaseMC/javgent/Master%20CI)](https://github.com/BaseMC/javgent/actions)
+[![Latest Version](https://img.shields.io/github/v/release/BaseMC/javgent)](https://github.com/BaseMC/javgent/releases)
+[![Build Develop](https://img.shields.io/github/workflow/status/BaseMC/javgent/Develop%20CI?label=build%20develop)](https://github.com/BaseMC/javgent/actions)
+
+
 
 # javgent
 Deobfuscates jars (.class-files) with mappings 
