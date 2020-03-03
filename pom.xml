@@ -13,14 +13,14 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    
+
     <slf4j.version>1.7.30</slf4j.version>
-    <log4j.version>2.13.0</log4j.version>
+    <log4j.version>2.13.1</log4j.version>
     <log4j-slf4j-impl.version>${log4j.version}</log4j-slf4j-impl.version>
 
     <asm.version>7.3.1</asm.version>
 
-    <junit.version>5.5.2</junit.version>
+    <junit.version>5.6.0</junit.version>
 
     <main.class>javgent.App</main.class>
 
@@ -83,7 +83,7 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.10.1</version>
+      <version>2.10.2</version>
     </dependency>
 
     <!-- Tests -->
