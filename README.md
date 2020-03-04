@@ -1,7 +1,7 @@
 [![Build](https://img.shields.io/github/workflow/status/BaseMC/javgent/Master%20CI)](https://github.com/BaseMC/javgent/actions)
 [![Latest Version](https://img.shields.io/github/v/release/BaseMC/javgent)](https://github.com/BaseMC/javgent/releases)
 [![Build Develop](https://img.shields.io/github/workflow/status/BaseMC/javgent/Develop%20CI?label=build%20develop)](https://github.com/BaseMC/javgent/actions)
-
+[![Known Vulnerabilities](https://snyk.io/test/github/BaseMC/javgent/badge.svg?targetFile=pom.xml)](https://snyk.io/test/github/BaseMC/javgent?targetFile=pom.xml)
 
 
 # javgent
