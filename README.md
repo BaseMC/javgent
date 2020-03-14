@@ -17,7 +17,7 @@ Uses [ASM](https://asm.ow2.io/) to make obfuscated java files readable (at least
   * [OpenJDK](https://jdk.java.net/) (has to be manually installed; requires some experience) 
   
 ## Download
-* https://github.com/BaseMC/javgent/releases
+Get the [latest release](https://github.com/BaseMC/javgent/releases)
 
 ## Usage 
 ### Important Parameters
