@@ -21,7 +21,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -60,7 +59,7 @@ public class Executor {
         if (!config.inMemoryMode) {
             this.inputDir = Paths.get(config.workDir, "input");
 
-            if(mappingMode == MappingMode.JSON_COM)
+            if (mappingMode == MappingMode.JSON_COM)
                 this.patchFileDir = Paths.get(config.workDir, "patchFiles");
 
             this.classesDir = Paths.get(config.workDir, "classes");
@@ -141,7 +140,7 @@ public class Executor {
         }
 
         if (config.readInputDirectly) {
-            if(this.mappingMode == MappingMode.JSON_COM) {
+            if (this.mappingMode == MappingMode.JSON_COM) {
                 this.patchFileDir = Paths.get(config.patchFileDir);
                 Log.info("Set patchFileDir='{}'", this.patchFileDir);
             } else {
@@ -169,7 +168,7 @@ public class Executor {
 
         patchClassesSet = mappingMode == MappingMode.JSON_COM ?
                 new ComJsonDirPatchFileReader().readPatchFiles(this.patchFileDir) :
-                    new NativeMappingsProcessor().readPatchFiles(this.config.mappingFile);
+                new NativeMappingsProcessor().readPatchFiles(this.config.mappingFile);
 
         sw.stop();
         Log.info("Finished reading patchFiles, took {}ms", sw.getTime());
@@ -275,7 +274,8 @@ public class Executor {
 
         Log.info("ClassFiles: {}x", files.stream().filter(f -> f.IsClass).count());
         Log.info("Processed: {} B", totalSizeProcessed);
-        Log.info("Avg processing speed: {} B/s", Math.floorDiv(totalSizeProcessed, sw.getTime(TimeUnit.SECONDS)));
+
+        Log.info("Avg processing speed: ~{} B/s", Math.round(totalSizeProcessed / (Math.max(1, sw.getTime()) / 1000.0d)));
 
         return files;
     }
@@ -338,22 +338,22 @@ public class Executor {
             if (config.inMemoryMode) {
                 new InMemoryJarPacker(excludeComponents)
                         .packJarInMemory(
-                            Stream.concat(
-                                    this.jarEntrys.stream()
-                                            .filter(entry -> !entry.IsClass)
-                                            .map(entry -> (FileEntryInfo) entry),
-                                    modifiedClasses.stream())
-                                    .collect(Collectors.toSet()),
-                            this.config.targetFile
-                );
+                                Stream.concat(
+                                        this.jarEntrys.stream()
+                                                .filter(entry -> !entry.IsClass)
+                                                .map(entry -> (FileEntryInfo) entry),
+                                        modifiedClasses.stream())
+                                        .collect(Collectors.toSet()),
+                                this.config.targetFile
+                        );
             } else {
                 new DiskJarPacker(excludeComponents)
                         .packJarFromDisk(
-                            Arrays.asList(
-                                    this.modifiedClassesDir,
-                                    this.nonClassesDir),
-                            this.config.targetFile
-                );
+                                Arrays.asList(
+                                        this.modifiedClassesDir,
+                                        this.nonClassesDir),
+                                this.config.targetFile
+                        );
             }
         } catch (IOException e) {
             throw new CancelExecutionException("Failed to pack jar", e);
