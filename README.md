@@ -1,7 +1,7 @@
 [![Build](https://img.shields.io/github/workflow/status/BaseMC/javgent/Master%20CI)](https://github.com/BaseMC/javgent/actions)
 [![Latest Version](https://img.shields.io/github/v/release/BaseMC/javgent)](https://github.com/BaseMC/javgent/releases)
 [![Build Develop](https://img.shields.io/github/workflow/status/BaseMC/javgent/Develop%20CI?label=build%20develop)](https://github.com/BaseMC/javgent/actions)
-
+[![Known Vulnerabilities](https://snyk.io/test/github/BaseMC/javgent/badge.svg?targetFile=pom.xml)](https://snyk.io/test/github/BaseMC/javgent?targetFile=pom.xml)
 
 
 # javgent
@@ -13,11 +13,11 @@ Uses [ASM](https://asm.ow2.io/) to make obfuscated java files readable (at least
 
 ## Requirements
 * Java 11+ <br/>Download it via 
-  * [AdoptOpenJRE/JDK](https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot) (just follow the instructions)
+  * [AdoptOpenJDK](https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot) (just follow the instructions)
   * [OpenJDK](https://jdk.java.net/) (has to be manually installed; requires some experience) 
   
 ## Download
-* https://github.com/BaseMC/javgent/releases
+Get the [latest release](https://github.com/BaseMC/javgent/releases)
 
 ## Usage 
 ### Important Parameters
@@ -130,8 +130,8 @@ If you don't want to use the [official releases](https://github.com/BaseMC/javge
 <i>Recommend:</i> use an IDE (e.g. IDEA or Eclipse) that already contains the following requirements
 * Java 11 JDK (see [above](#requirements))
 * latest Maven (3+) 
-  * download → https://maven.apache.org/download.cgi 
-  * install it → https://maven.apache.org/install.html
+  * [download](https://maven.apache.org/download.cgi)
+  * [install it](https://maven.apache.org/install.html)
 
 ### Build an executable jar
 * Open a new commandline / shell in the repository-root
