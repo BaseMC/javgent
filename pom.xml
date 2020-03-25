@@ -20,7 +20,7 @@
 
     <asm.version>7.3.1</asm.version>
 
-    <junit.version>5.6.0</junit.version>
+    <junit.version>5.6.1</junit.version>
 
     <main.class>javgent.App</main.class>
 
