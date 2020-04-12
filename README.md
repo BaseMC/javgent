@@ -144,6 +144,6 @@ If you don't want to use the [official releases](https://github.com/BaseMC/javge
 
 ## Dependencies and licenses
 * [LICENSE](LICENSE) of the source code itself
-* all included libaries
+* all nested libaries
   * View it [online](https://basemc.github.io/javgent/dependencies/)
   * Checkout the source code and run ``mvn project-info-reports:dependencies``
