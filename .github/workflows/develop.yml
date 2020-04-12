@@ -49,8 +49,8 @@ jobs:
         run: mvn -B clean verify -Psonar -Dsonar.login=${{ secrets.SONAR_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  license-to-pages:
-    name: Publish licenses to pages
+  publish-pages:
+    name: Publish dependencies and licenses to pages
     runs-on: ubuntu-latest
     
     steps:
@@ -74,7 +74,7 @@ jobs:
           name: dependencies-licenses
           path: target/site
       - name: Generate docs/dependencies dir
-        run: mkdir docs/dependencies
+        run: mkdir -p docs/dependencies
       - name: Move built files into docs/dependencies
         run: mv target/site docs/dependencies
       - name: Copy Readme into docs
