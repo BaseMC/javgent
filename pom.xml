@@ -32,7 +32,7 @@
     <log4j.version>2.13.1</log4j.version>
     <log4j-slf4j-impl.version>${log4j.version}</log4j-slf4j-impl.version>
 
-    <asm.version>8.0</asm.version>
+    <asm.version>8.0.1</asm.version>
 
     <junit.version>5.6.1</junit.version>
 
