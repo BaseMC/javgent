@@ -38,7 +38,8 @@ jobs:
         run: mv dependencies.html index.html
       - name: Copy Readme into docs (as index.md)
         run: cp README.md docs/index.md
-      - name: Configure
+      - name: Configure Pages
+        working-directory: docs
         run: |-
           echo "theme: jekyll-theme-midnight" > _config.yml
       - name: Deploy to Github pages
