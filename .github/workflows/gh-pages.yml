@@ -2,7 +2,7 @@ name: GH-Pages CI
 
 on:
   push:
-    branches: develop
+    branches: master
 
 jobs:
   publish-pages:
