@@ -142,6 +142,8 @@ If you don't want to use the [official releases](https://github.com/BaseMC/javge
 * [IntelliJ IDEA](https://www.jetbrains.com/de-de/idea/download/)
 * [SonarLint](https://www.sonarlint.org/intellij/)
 
-## Licenses
-* source code itself: [LICENSE](LICENSE)
-* used libarys that must be mentioned: [LICENSES.txt](LICENSES.txt)
+## Dependencies and licenses
+* [LICENSE](LICENSE) of the source code itself
+* all nested libaries
+  * View it [online](https://basemc.github.io/javgent/dependencies/)
+  * Checkout the source code and run ``mvn project-info-reports:dependencies``
