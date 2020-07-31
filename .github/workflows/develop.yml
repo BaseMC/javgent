@@ -38,7 +38,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11.0.x
-      - name: Setup - Fetch all history for all tags and branches
+      - name: Setup - Fetch complete history for all tags and branches
         run: git fetch --prune --unshallow
       - name: Restore - Maven Cache
         uses: actions/cache@v1
