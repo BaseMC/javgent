@@ -49,6 +49,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11.0.x
+      - name: Setup - Fetch complete history for all tags and branches
+        run: git fetch --prune --unshallow
       - name: Analyze - SonarCloud Scan
         run: mvn -B clean verify -Psonar -Dsonar.login=${{ secrets.SONAR_TOKEN }}
         env:
