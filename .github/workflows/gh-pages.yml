@@ -30,7 +30,7 @@ jobs:
         run: mvn -B project-info-reports:dependencies
 
       - name: Upload licenses - Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2.2.0
         with:
           name: dependencies-licenses
           path: target/site
