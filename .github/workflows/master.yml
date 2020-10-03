@@ -17,22 +17,27 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Setup - Java
         uses: actions/setup-java@v1
         with:
           java-version: 11.0.x
+
       - name: Build - Maven Package
         run: mvn -B clean package -DskipTests
+
       - name: Test - Maven Verify
         run: mvn -B clean verify
+
       - name: Release - Create Draft for Release
         id: create_draft
         uses: release-drafter/release-drafter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Release - Upload Release Asset
         id: upload-release-asset 
-        uses: actions/upload-release-asset@v1.0.1
+        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -40,16 +45,19 @@ jobs:
           asset_path: ./target/javgent-standalone.jar
           asset_name: javgent-standalone.jar
           asset_content_type: application/java-archive
+
   sonar:
     name: SonarCloud Scan
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Setup - Java
         uses: actions/setup-java@v1
         with:
           java-version: 11.0.x
+
       - name: Setup - Fetch complete history for all tags and branches
         run: git fetch --prune --unshallow
       - name: Analyze - SonarCloud Scan
