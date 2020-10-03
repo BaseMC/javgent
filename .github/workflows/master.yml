@@ -3,8 +3,7 @@ name: Master CI
 on: 
   workflow_dispatch:
   push:
-    branches: 
-      - 'master'
+    branches: [ master ]
 
 # Don't use a cache here: 
 #  This is the last instance that can detect missing dependecies
@@ -45,22 +44,3 @@ jobs:
           asset_path: ./target/javgent-standalone.jar
           asset_name: javgent-standalone.jar
           asset_content_type: application/java-archive
-
-  sonar:
-    name: SonarCloud Scan
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup - Java
-        uses: actions/setup-java@v1
-        with:
-          java-version: 11.0.x
-
-      - name: Setup - Fetch complete history for all tags and branches
-        run: git fetch --prune --unshallow
-      - name: Analyze - SonarCloud Scan
-        run: mvn -B clean verify -Psonar -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
