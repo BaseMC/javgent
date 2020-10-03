@@ -19,7 +19,7 @@ jobs:
           java-version: 11.0.x
 
       - name: Restore - Maven Cache
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
@@ -30,7 +30,7 @@ jobs:
         run: mvn -B project-info-reports:dependencies
 
       - name: Upload licenses - Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: dependencies-licenses
           path: target/site
