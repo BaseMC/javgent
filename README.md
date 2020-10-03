@@ -1,6 +1,6 @@
-[![Build](https://img.shields.io/github/workflow/status/BaseMC/javgent/Master%20CI)](https://github.com/BaseMC/javgent/actions)
+[![Build](https://img.shields.io/github/workflow/status/BaseMC/javgent/Master%20CI)](https://github.com/BaseMC/javgent/actions?query=workflow%3A%22Master+CI%22)
 [![Latest Version](https://img.shields.io/github/v/release/BaseMC/javgent)](https://github.com/BaseMC/javgent/releases)
-[![Build Develop](https://img.shields.io/github/workflow/status/BaseMC/javgent/Develop%20CI?label=build%20develop)](https://github.com/BaseMC/javgent/actions)
+[![Build Develop](https://img.shields.io/github/workflow/status/BaseMC/javgent/Develop%20CI/develop?label=build%20develop)](https://github.com/BaseMC/javgent/actions?query=workflow%3A%22Develop+CI%22+branch%3Adevelop)
 [![Known Vulnerabilities](https://snyk.io/test/github/BaseMC/javgent/badge.svg?targetFile=pom.xml)](https://snyk.io/test/github/BaseMC/javgent?targetFile=pom.xml)
 
 
