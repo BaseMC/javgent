@@ -17,7 +17,7 @@ Uses [ASM](https://asm.ow2.io/) to make obfuscated java files readable (at least
 
 ### [Building](docs/Building.md)
 
-## Dependencies and Licenses
+### Dependencies and Licenses
 * [LICENSE](LICENSE) of the source code itself
 * all nested libaries
   * View [online](https://basemc.github.io/javgent/dependencies/)
