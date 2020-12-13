@@ -12,9 +12,7 @@ on:
       - '**.md'
 
 jobs:
-  test:
-    name: Test - Build & Unit
-    #no integration tests so far
+  build:
     runs-on: ubuntu-latest
 
     steps:
