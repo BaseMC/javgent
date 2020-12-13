@@ -38,3 +38,10 @@ jobs:
 
       - name: Test - Maven Verify
         run: mvn -B clean verify
+
+      - name: Upload snupkg - Upload asset
+        uses: actions/upload-artifact@v2
+        with:
+          name: javgent-standalone
+          path: ./target/javgent-standalone.jar
+          if-no-files-found: error
