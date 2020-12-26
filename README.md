@@ -13,7 +13,7 @@ Uses [ASM](https://asm.ow2.io/) to make obfuscated java files readable (at least
 
 ### [Usage](docs/Usage.md)
   
-### [Developing](docs/Developing.md) [![Build Develop](https://img.shields.io/github/workflow/status/BaseMC/javgent/Check%20Build/develop?label=build%20develop)](https://github.com/BaseMC/javgent/actions?query=workflow%3A%22Check+Build%22+branch%3Adevelop) [![Known Vulnerabilities](https://snyk.io/test/github/BaseMC/javgent/badge.svg?targetFile=pom.xml)](https://snyk.io/test/github/BaseMC/javgent?targetFile=pom.xml)
+### [Developing](docs/Developing.md) [![Build Develop](https://img.shields.io/github/workflow/status/BaseMC/javgent/Check%20Build/develop?label=build%20develop)](https://github.com/BaseMC/javgent/actions?query=workflow%3A%22Check+Build%22+branch%3Adevelop)
 
 ### [Building](docs/Building.md)
 
