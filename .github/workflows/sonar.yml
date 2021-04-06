@@ -18,6 +18,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: 11.0.x
+        distribution: 'adopt'
 
     - name: Setup - Fetch complete history for all tags and branches
       run: git fetch --prune --unshallow
