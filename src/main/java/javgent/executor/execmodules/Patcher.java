@@ -73,13 +73,13 @@ public class Patcher {
     }
 
     private void renameClasses() {
-        Log.info("Starting renaming/moving Classes");
+        Log.info("Starting renaming/moving classes");
         StopWatch sw = StopWatch.createStarted();
 
         new HashSet<>(returnSet).forEach(this::renameClass);
 
         sw.stop();
-        Log.info("Finished renaming/moving Classes, took {}ms", sw.getTime());
+        Log.info("Finished renaming/moving classes, took {}ms", sw.getTime());
     }
 
     private void renameClass(FileEntryInfo fi) {
