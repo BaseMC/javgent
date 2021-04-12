@@ -78,19 +78,23 @@ public class CurrentMethodController {
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .collect(Collectors.toList());
+
         if(parentResults.isEmpty())
             return Optional.empty();
 
-        if(parentResults.size() > 1)
+        if(Log.isDebugEnabled() && parentResults.size() > 1) {
+            var logParents = String.join(
+                    ", ",
+                    parentResults.stream()
+                            .map(r -> r.Name + "/" + r.ObfName)
+                            .collect(Collectors.toList())
+            );
+
             Log.debug("Got multiple results({}x) from parents: [{}]",
                     parentResults.size(),
-                    String.join(
-                            ", ",
-                            parentResults.stream()
-                                    .map(r -> r.Name+"/"+r.ObfName)
-                                    .collect(Collectors.toList())
-                    )
+                    logParents
             );
+        }
 
         return Optional.ofNullable(parentResults.get(0));
     }

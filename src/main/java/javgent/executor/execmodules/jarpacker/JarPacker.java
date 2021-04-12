@@ -11,7 +11,7 @@ public abstract class JarPacker {
 
     protected final List<ExcludedComponent> excludedComponents;
 
-    public JarPacker(List<ExcludedComponent> excludedComponents) {
+    protected JarPacker(List<ExcludedComponent> excludedComponents) {
         this.excludedComponents = excludedComponents;
     }
 
