@@ -1,13 +1,16 @@
 name: Sonar CI
 
 on:
+  workflow_dispatch:
   push:
     branches: [ master, develop ]
     paths-ignore: 
       - '**.md'
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
- sonar:
+  sonar:
     name: SonarCloud Scan
     runs-on: ubuntu-latest
 
