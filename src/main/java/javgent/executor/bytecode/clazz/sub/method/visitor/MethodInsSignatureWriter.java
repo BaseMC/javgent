@@ -1,49 +1,29 @@
 package javgent.executor.bytecode.clazz.sub.method.visitor;
 
 import javgent.executor.bytecode.clazz.CurrentClassController;
+import javgent.executor.bytecode.abstractdefault.AbstractClassBasedSignatureWriter;
 import org.objectweb.asm.signature.SignatureReader;
-import org.objectweb.asm.signature.SignatureWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MethodInsSignatureWriter extends SignatureWriter {
+public class MethodInsSignatureWriter extends AbstractClassBasedSignatureWriter {
 
-    private static final Logger Log = LoggerFactory.getLogger(MethodInsSignatureWriter.class);
-
-    private CurrentClassController controller;
+    private static final Logger LOG = LoggerFactory.getLogger(MethodInsSignatureWriter.class);
 
     public MethodInsSignatureWriter(CurrentClassController controller) {
-        this.controller = controller;
-    }
-
-    @Override
-    public void visitClassType(String name) {
-
-        String newName = controller.findNameByObfNameOrReturn(name);
-
-        super.visitClassType(newName);
-    }
-
-    @Override
-    public void visitFormalTypeParameter(String name) {
-
-        String newName = controller.findNameByObfNameOrReturn(name);
-
-        super.visitFormalTypeParameter(newName);
+        super(controller);
     }
 
     @Override
     public void visitInnerClassType(String name) {
-        if(name.length() > 1)
-            Log.warn("Visiting not implemented method! name='{}'", name);
+        LOG.warn("Visiting not implemented method! name='{}'", name);
 
         super.visitInnerClassType(name);
     }
 
     @Override
     public void visitTypeVariable(String name) {
-        if(name.length() > 1)
-            Log.warn("Visiting not implemented method! name='{}'", name);
+        LOG.warn("Visiting not implemented method! name='{}'", name);
 
         super.visitTypeVariable(name);
     }

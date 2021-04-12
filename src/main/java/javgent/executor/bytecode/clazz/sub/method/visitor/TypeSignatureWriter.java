@@ -1,40 +1,21 @@
 package javgent.executor.bytecode.clazz.sub.method.visitor;
 
 import javgent.executor.bytecode.clazz.CurrentClassController;
+import javgent.executor.bytecode.abstractdefault.AbstractClassBasedSignatureWriter;
 import org.objectweb.asm.signature.SignatureReader;
-import org.objectweb.asm.signature.SignatureWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TypeSignatureWriter extends SignatureWriter {
+public class TypeSignatureWriter extends AbstractClassBasedSignatureWriter {
 
     private static final Logger Log = LoggerFactory.getLogger(TypeSignatureWriter.class);
 
-    private CurrentClassController controller;
-
     public TypeSignatureWriter(CurrentClassController controller) {
-        this.controller = controller;
-    }
-
-    @Override
-    public void visitClassType(String name) {
-
-        String newName = controller.findNameByObfNameOrReturn(name);
-
-        super.visitClassType(newName);
-    }
-
-    @Override
-    public void visitFormalTypeParameter(String name) {
-
-        String newName = controller.findNameByObfNameOrReturn(name);
-
-        super.visitFormalTypeParameter(newName);
+        super(controller);
     }
 
     @Override
     public void visitInnerClassType(String name) {
-
         Log.warn("Visiting not implemented method! name='{}'", name);
 
         super.visitInnerClassType(name);
@@ -42,7 +23,7 @@ public class TypeSignatureWriter extends SignatureWriter {
 
     @Override
     public void visitTypeVariable(String name) {
-        String newName = controller.findNameByObfNameOrReturn(name);
+        var newName = controller.findNameByObfNameOrReturn(name);
 
         super.visitTypeVariable(newName);
     }
@@ -55,7 +36,7 @@ public class TypeSignatureWriter extends SignatureWriter {
         // Inputs can be e.g.
         // - ClassAObfuscatedAsABC <- Plain name
         // - [L...someSignatureStuff...; <- Signature
-        // extremely illogical...
+        // extremely unlogical...
         if(!signature.startsWith("[L") || !signature.endsWith(";"))
             return currentClassController.findNameByObfNameOrReturn(signature);
 
