@@ -7,6 +7,7 @@ import java.util.List;
 public abstract class JarPacker {
 
     public static final String META_INF = "META-INF";
+    // TODO: Make configure by arg?
     public static final String META_INF_REPLACEMENT = "META-INF-ORIG";
 
     protected final List<ExcludedComponent> excludedComponents;
