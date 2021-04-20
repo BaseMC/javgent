@@ -10,7 +10,7 @@ import java.util.Optional;
 /**
  * Commandlineparser
  */
-//squid:S106 Standard outputs should not be used directly to log anything - It's used on the console so...
+//squid:S106 "Standard outputs should not be used directly to log anything" - It's used on the console so let's ignore it ;)
 @SuppressWarnings("squid:S106")
 public class Parser {
 
