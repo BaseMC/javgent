@@ -203,7 +203,7 @@
             <groupId>org.sonarsource.scanner.maven</groupId>
             <artifactId>sonar-maven-plugin</artifactId>
             <!-- Oct, 2019 -->
-            <version>3.8.0.2131</version>
+            <version>3.9.0.2155</version>
             <executions>
               <execution>
                 <phase>verify</phase>
