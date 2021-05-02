@@ -1,4 +1,4 @@
-# javgent [![Build](https://img.shields.io/github/workflow/status/BaseMC/javgent/Master%20CI)](https://github.com/BaseMC/javgent/actions?query=workflow%3A%22Master+CI%22) [![Latest Version](https://img.shields.io/github/v/release/BaseMC/javgent)](https://github.com/BaseMC/javgent/releases)
+# javgent [![Build](https://img.shields.io/github/workflow/status/BaseMC/javgent/Release)](https://github.com/BaseMC/javgent/actions?query=workflow%3A%22Release%22) [![Latest Version](https://img.shields.io/github/v/release/BaseMC/javgent)](https://github.com/BaseMC/javgent/releases)
 Deobfuscates jars (.class-files) with mappings 
 
 Mainly written as utility for [Aves](https://github.com/BaseMC/Aves) → Java-Aves-Agent
