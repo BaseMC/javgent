@@ -27,10 +27,14 @@ public class InnerClassTypeResolver {
 
         var index = newClassName.indexOf('$');
         if (index == -1) {
-            Log.warn("Failed to find innerClassName: No $ in base='{}'/'{}'; innerClassName='{}'",
-                    controller.findNameByObfNameOrReturn(obfBaseClassName),
-                    obfBaseClassName,
-                    endClassName);
+            if(Log.isWarnEnabled()) {
+                var logBaseName = controller.findNameByObfNameOrReturn(obfBaseClassName);
+
+                Log.warn("Failed to find innerClassName: No $ in base='{}'/'{}'; innerClassName='{}'",
+                        logBaseName,
+                        obfBaseClassName,
+                        endClassName);
+            }
             return endClassName;
         }
 

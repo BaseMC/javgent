@@ -1,37 +1,19 @@
 package javgent.executor.bytecode.clazz.writers;
 
+import javgent.executor.bytecode.abstractdefault.AbstractClassBasedSignatureWriter;
 import javgent.executor.bytecode.clazz.CurrentClassController;
 import javgent.executor.bytecode.clazz.util.InnerClassTypeResolver;
 import org.objectweb.asm.signature.SignatureReader;
 import org.objectweb.asm.signature.SignatureWriter;
 
-public class ClassSignatureWriter extends SignatureWriter {
-    
-    private CurrentClassController controller;
+public class ClassSignatureWriter extends AbstractClassBasedSignatureWriter {
 
     public ClassSignatureWriter(CurrentClassController controller) {
-        this.controller = controller;
-    }
-
-    @Override
-    public void visitClassType(String name) {
-
-        String newName = controller.findNameByObfNameOrReturn(name);
-
-        super.visitClassType(newName);
-    }
-
-    @Override
-    public void visitFormalTypeParameter(String name) {
-
-        String newName = controller.findNameByObfNameOrReturn(name);
-
-        super.visitFormalTypeParameter(newName);
+        super(controller);
     }
 
     @Override
     public void visitInnerClassType(String name) {
-
         var newName = InnerClassTypeResolver.resolve(controller, name);
 
         super.visitInnerClassType(newName);
@@ -39,7 +21,7 @@ public class ClassSignatureWriter extends SignatureWriter {
 
     @Override
     public void visitTypeVariable(String name) {
-        String newName = controller.findNameByObfNameOrReturn(name);
+        var newName = controller.findNameByObfNameOrReturn(name);
 
         super.visitTypeVariable(newName);
     }

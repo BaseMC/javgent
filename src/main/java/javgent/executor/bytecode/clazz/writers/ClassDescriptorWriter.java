@@ -18,8 +18,7 @@ public class ClassDescriptorWriter extends SignatureWriter {
 
     @Override
     public void visitClassType(String name) {
-
-        String newName = controller.findNameByObfNameOrReturn(name);
+        var newName = controller.findNameByObfNameOrReturn(name);
 
         super.visitClassType(newName);
     }

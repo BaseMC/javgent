@@ -97,7 +97,11 @@ public class Executor {
         packJar();
 
         sw.stop();
-        Log.info("Done, took {} (or {}ms)", DurationFormatUtils.formatDurationHMS(sw.getTime()), sw.getTime());
+        if(Log.isInfoEnabled()) {
+            var logFormattedTime = DurationFormatUtils.formatDurationHMS(sw.getTime());
+            Log.info("Done, took {} (or {}ms)", logFormattedTime, sw.getTime());
+        }
+
     }
 
     private void prepare() {
@@ -341,7 +345,7 @@ public class Executor {
                                 Stream.concat(
                                         this.jarEntrys.stream()
                                                 .filter(entry -> !entry.IsClass)
-                                                .map(entry -> (FileEntryInfo) entry),
+                                                .map(FileEntryInfo.class::cast),
                                         modifiedClasses.stream())
                                         .collect(Collectors.toSet()),
                                 this.config.targetFile
