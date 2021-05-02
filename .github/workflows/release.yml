@@ -1,4 +1,4 @@
-name: Master CI
+name: Release
 
 on: 
   workflow_dispatch:
@@ -8,9 +8,8 @@ on:
 jobs:
   build_release:
     name: Build & Release
-    #no integration tests so far
+    
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
 
