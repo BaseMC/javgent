@@ -11,7 +11,7 @@ public final class ASMAC {
         //No Impl pls
     }
 
-    public static final int ASM_VERSION = Opcodes.ASM5;
+    public static final int ASM_VERSION = Opcodes.ASM9;
 
     public static final String JAVA_PACKAGE_SEPARATOR = ".";
     public static final String CLASS_PACKAGE_SEPARATOR = "/";

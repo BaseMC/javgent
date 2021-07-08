@@ -10,7 +10,12 @@ import javgent.executor.bytecode.clazz.util.RemoteFieldResolver;
 import javgent.executor.bytecode.clazz.util.RemoteMethodResolver;
 import javgent.executor.bytecode.clazz.writers.ClassDescriptorWriter;
 import javgent.executor.bytecode.clazz.writers.ClassSignatureWriter;
-import org.objectweb.asm.*;
+import org.objectweb.asm.AnnotationVisitor;
+import org.objectweb.asm.Attribute;
+import org.objectweb.asm.Handle;
+import org.objectweb.asm.Label;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.TypePath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -68,7 +73,6 @@ public class BCMethodVisitor extends MethodVisitor {
 
     @Override
     public void visitMethodInsn(int opcode, String owner, String name, String descriptor, boolean isInterface) {
-
 
         var optionalMethodMethodResolverResult = RemoteMethodResolver.resolve(getCurrentClassController(), owner, name, descriptor);
         if (optionalMethodMethodResolverResult.isPresent()) {
@@ -190,7 +194,7 @@ public class BCMethodVisitor extends MethodVisitor {
 
     @Override
     public AnnotationVisitor visitInsnAnnotation(int typeRef, TypePath typePath, String descriptor, boolean visible) {
-        Log.warn("Visiting not implemented method! descriptor='{}'", descriptor);
+        Log.warn("Visiting not implemented 'visitInsnAnnotation! descriptor='{}'", descriptor);
         return super.visitInsnAnnotation(typeRef, typePath, descriptor, visible);
     }
 
@@ -198,13 +202,13 @@ public class BCMethodVisitor extends MethodVisitor {
 
     @Override
     public void visitAttribute(Attribute attribute) {
-        Log.warn("Visiting not implemented method! attr.type='{}'", attribute.type);
+        Log.warn("Visiting not implemented 'visitAttribute'! attr.type='{}'", attribute.type);
         super.visitAttribute(attribute);
     }
 
     @Override
     public void visitParameter(String name, int access) {
-        Log.warn("Visiting not implemented method! name='{}'", name);
+        Log.warn("Visiting not implemented 'visitParameter'! name='{}'", name);
         super.visitParameter(name, access);
     }
 

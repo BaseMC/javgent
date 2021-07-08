@@ -2,14 +2,21 @@ package javgent.executor.bytecode.clazz;
 
 import javgent.ASMAC;
 import javgent.executor.bytecode.ClassControllerRegistry;
+import javgent.executor.bytecode.clazz.sub.field.BCFieldVisitor;
+import javgent.executor.bytecode.clazz.sub.field.ModifierForField;
 import javgent.executor.bytecode.clazz.sub.method.BCMethodVisitor;
 import javgent.executor.bytecode.clazz.sub.method.ModifierForMethod;
-import javgent.executor.bytecode.clazz.sub.field.ModifierForField;
-import javgent.executor.bytecode.clazz.sub.field.BCFieldVisitor;
 import javgent.executor.bytecode.clazz.sub.method.visitor.MethodSignatureWriter;
 import javgent.executor.bytecode.clazz.util.RemoteMethodResolver;
 import javgent.executor.bytecode.clazz.writers.ClassDescriptorWriter;
-import org.objectweb.asm.*;
+import org.objectweb.asm.AnnotationVisitor;
+import org.objectweb.asm.Attribute;
+import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.FieldVisitor;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.ModuleVisitor;
+import org.objectweb.asm.RecordComponentVisitor;
+import org.objectweb.asm.TypePath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -143,8 +150,6 @@ public class BCClassVisitor extends ClassVisitor {
 
         var result = optResult.get();
 
-        String newOwner = result.Owner;
-
         var optName = result.Name;
         if (optName.isPresent())
             name = optName.get();
@@ -152,7 +157,7 @@ public class BCClassVisitor extends ClassVisitor {
         if (descriptor != null)
             descriptor = MethodSignatureWriter.convert(controller, descriptor);
 
-        super.visitOuterClass(newOwner, name, descriptor);
+        super.visitOuterClass(result.Owner, name, descriptor);
     }
 
     @Override
@@ -180,31 +185,45 @@ public class BCClassVisitor extends ClassVisitor {
 
     @Override
     public void visitNestMember(String nestMember) {
-        Log.warn("Visiting not implemented method! nestMember='{}'", nestMember);
-        super.visitNestMember(nestMember);
+        if (!controllerPresent()) {
+            super.visitNestMember(nestMember);
+            return;
+        }
+
+        super.visitNestMember(controller.findNameByObfNameOrReturn(nestMember));
     }
 
     @Override
     public void visitNestHost(String nestHost) {
-        Log.warn("Visiting not implemented method! nestHost='{}'", nestHost);
-        super.visitNestHost(nestHost);
+        if (!controllerPresent()) {
+            super.visitNestHost(nestHost);
+            return;
+        }
+
+        super.visitNestHost(controller.findNameByObfNameOrReturn(nestHost));
     }
 
     @Override
     public ModuleVisitor visitModule(String name, int access, String version) {
-        Log.warn("Visiting not implemented method! name='{}',version='{}'", name, version);
+        Log.warn("Visiting not implemented 'visitModule'! name='{}',version='{}'", name, version);
         return super.visitModule(name, access, version);
     }
 
     @Override
     public AnnotationVisitor visitTypeAnnotation(int typeRef, TypePath typePath, String descriptor, boolean visible) {
-        Log.warn("Visiting not implemented method! typePath='{}',descriptor='{}'", typePath, descriptor);
+        Log.warn("Visiting not implemented 'visitTypeAnnotation'! typePath='{}',descriptor='{}'", typePath, descriptor);
         return super.visitTypeAnnotation(typeRef, typePath, descriptor, visible);
     }
 
     @Override
     public void visitAttribute(Attribute attribute) {
-        Log.warn("Visiting not implemented method! attr.type='{}'", attribute.type);
+        Log.warn("Visiting not implemented 'visitAttribute'! attr.type='{}'", attribute.type);
         super.visitAttribute(attribute);
+    }
+
+    @Override
+    public RecordComponentVisitor visitRecordComponent(String name, String descriptor, String signature) {
+        Log.warn("Visiting not implemented 'visitRecordComponent'! name='{},descriptor='{}'", name, descriptor);
+        return super.visitRecordComponent(name, descriptor, signature);
     }
 }
