@@ -30,14 +30,13 @@ public class BCFieldVisitor extends FieldVisitor {
 
     @Override
     public void visitAttribute(Attribute attribute) {
-        Log.warn("Visiting not implemented method! type='{}'", attribute.type);
+        Log.warn("Visiting not implemented 'visitAttribute'! type='{}'", attribute.type);
         super.visitAttribute(attribute);
     }
 
     @Override
     public AnnotationVisitor visitTypeAnnotation(int typeRef, TypePath typePath, String descriptor, boolean visible) {
-        Log.warn("Visiting not implemented method! typePath='{}',descriptor='{}'", typePath, descriptor);
+        Log.warn("Visiting not implemented 'visitTypeAnnotation'! typePath='{}',descriptor='{}'", typePath, descriptor);
         return super.visitTypeAnnotation(typeRef, typePath, descriptor, visible);
     }
-
 }
