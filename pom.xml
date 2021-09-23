@@ -33,7 +33,7 @@
 
     <asm.version>9.2</asm.version>
 
-    <junit.version>5.8.0</junit.version>
+    <junit.version>5.8.1</junit.version>
 
     <main.class>javgent.App</main.class>
 
