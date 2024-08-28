@@ -3,7 +3,7 @@ If you don't want to use the [official releases](https://github.com/BaseMC/javge
 
 ### Requirements
 <i>Recommend:</i> use an IDE (e.g. IDEA or Eclipse) that already contains the following requirements
-* Java 11 JDK (see [Requirements](https://github.com/BaseMC/javgent#requirements))
+* Java 21 JDK (see [Requirements](https://github.com/BaseMC/javgent#requirements))
 * latest Maven (3+) 
   * [download](https://maven.apache.org/download.cgi)
   * [install it](https://maven.apache.org/install.html)
