@@ -1,10 +1,10 @@
 [![Latest Version](https://img.shields.io/github/v/release/BaseMC/javgent)](https://github.com/BaseMC/javgent/releases)
 # javgent
-Deobfuscates jars (.class-files) with mappings 
+Best effort deobfuscating jars (.class-files) with mappings 
 
 Mainly written as utility for [Aves](https://github.com/BaseMC/Aves) → Java-Aves-Agent
 
-Uses [ASM](https://asm.ow2.io/) to make obfuscated java files readable (at least it tries it's best :innocent:).
+Uses [ASM](https://asm.ow2.io/) to make obfuscated java files readable
 
 ### [Download](https://github.com/BaseMC/javgent/releases)
 #### Requirements
