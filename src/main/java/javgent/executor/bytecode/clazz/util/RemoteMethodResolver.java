@@ -26,7 +26,7 @@ public class RemoteMethodResolver {
         result.Owner = currentClassController.findNameByObfNameOrReturn(owner);
 
         if(obfName == null && desc == null)
-            return Optional.ofNullable(result);
+            return Optional.of(result);
 
         var selector = MethodSelectorVistiorDetector.findSelector(remoteController, desc, null);
 
@@ -37,7 +37,7 @@ public class RemoteMethodResolver {
             result.Name = Optional.ofNullable(remotePatchMethod.Name);
         }
 
-        return Optional.ofNullable(result);
+        return Optional.of(result);
     }
 
     @SuppressWarnings({"squid:ClassVariableVisibilityCheck", "squid:S00116"})

@@ -21,8 +21,6 @@ public class App {
             System.exit(-1);
         });
 
-        LOG.info("project and license information: https://github.com/BaseMC/javgent");
-
         try {
             Optional<ExecutorConfig> optionalExecutorConfig = Parser.parse(args);
             if (optionalExecutorConfig.isEmpty())

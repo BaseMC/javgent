@@ -26,7 +26,7 @@ public class CurrentClassController {
 
     public String findNameByObfNameOrReturn(String obfName) {
         var opt = findPatchClassByObfName(obfName);
-        if (!opt.isPresent())
+        if (opt.isEmpty())
             return obfName;
         return opt.get().Name;
     }

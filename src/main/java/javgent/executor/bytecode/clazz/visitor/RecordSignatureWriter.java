@@ -1,12 +1,12 @@
-package javgent.executor.bytecode.clazz.sub.method.visitor;
+package javgent.executor.bytecode.clazz.visitor;
 
 import javgent.executor.bytecode.abstractdefault.AbstractDefaultSignatureWriter;
 import javgent.executor.bytecode.clazz.CurrentClassController;
 import org.objectweb.asm.signature.SignatureReader;
 
-public class MethodSignatureWriter extends AbstractDefaultSignatureWriter {
+public class RecordSignatureWriter extends AbstractDefaultSignatureWriter {
 
-    public MethodSignatureWriter(CurrentClassController controller) {
+    public RecordSignatureWriter(CurrentClassController controller) {
         super(controller);
     }
 
@@ -14,7 +14,7 @@ public class MethodSignatureWriter extends AbstractDefaultSignatureWriter {
         if(signature == null)
             return null;
 
-        var writer = new MethodSignatureWriter(currentClassController);
+        var writer = new RecordSignatureWriter(currentClassController);
 
         new SignatureReader(signature).accept(writer);
 

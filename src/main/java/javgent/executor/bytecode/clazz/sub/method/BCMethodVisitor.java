@@ -59,7 +59,8 @@ public class BCMethodVisitor extends MethodVisitor {
             if (optName.isPresent())
                 name = optName.get();
             else
-                Log.info("Failed to find name: {}, {}, {} ", owner, name, descriptor);
+                Log.debug("Failed to find name: {} aka {}, {}, {} - Assuming that name needs no translation",
+                    owner, methodFieldResolverResult.Owner, name, descriptor);
 
             owner = methodFieldResolverResult.Owner;
         } else
@@ -208,6 +209,12 @@ public class BCMethodVisitor extends MethodVisitor {
 
     @Override
     public void visitParameter(String name, int access) {
+        if(name == null)
+        {
+            super.visitParameter(null, access);
+            return;
+        }
+
         Log.warn("Visiting not implemented 'visitParameter'! name='{}'", name);
         super.visitParameter(name, access);
     }
