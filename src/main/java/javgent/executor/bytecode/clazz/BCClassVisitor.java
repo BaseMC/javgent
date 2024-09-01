@@ -8,6 +8,8 @@ import javgent.executor.bytecode.clazz.sub.method.BCMethodVisitor;
 import javgent.executor.bytecode.clazz.sub.method.ModifierForMethod;
 import javgent.executor.bytecode.clazz.sub.method.visitor.MethodSignatureWriter;
 import javgent.executor.bytecode.clazz.util.RemoteMethodResolver;
+import javgent.executor.bytecode.clazz.visitor.RecordDescriptorWriter;
+import javgent.executor.bytecode.clazz.visitor.RecordSignatureWriter;
 import javgent.executor.bytecode.clazz.writers.ClassDescriptorWriter;
 import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.Attribute;
@@ -129,7 +131,7 @@ public class BCClassVisitor extends ClassVisitor {
 
         //name of a method (likely)
         var optNewController = controller.getRegistry().getByObfName(owner);
-        if (!optNewController.isPresent()) {
+        if (optNewController.isEmpty()) {
             Log.debug("Unable to get controller for owner='{}'", owner);
             super.visitOuterClass(owner, name, descriptor);
             return;
@@ -142,7 +144,7 @@ public class BCClassVisitor extends ClassVisitor {
                 name,
                 descriptor);
 
-        if (!optResult.isPresent()) {
+        if (optResult.isEmpty()) {
             Log.debug("Unable to get result for owner='{}', name='{}'", owner, name);
             super.visitOuterClass(owner, name, descriptor);
             return;
@@ -223,7 +225,15 @@ public class BCClassVisitor extends ClassVisitor {
 
     @Override
     public RecordComponentVisitor visitRecordComponent(String name, String descriptor, String signature) {
-        Log.warn("Visiting not implemented 'visitRecordComponent'! name='{},descriptor='{}'", name, descriptor);
+        if (!controllerPresent()) {
+            return super.visitRecordComponent(name, descriptor, signature);
+        }
+
+        name = controller.getFieldsController().findNameByObfNameOrReturn(name);
+        descriptor = RecordDescriptorWriter.convert(controller, descriptor);
+        if (signature != null)
+            signature = RecordSignatureWriter.convert(controller, signature);
+
         return super.visitRecordComponent(name, descriptor, signature);
     }
 }

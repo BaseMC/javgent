@@ -3,11 +3,11 @@ package javgent.executor.bytecode.abstractdefault;
 import javgent.executor.bytecode.clazz.CurrentClassController;
 import org.objectweb.asm.signature.SignatureWriter;
 
-public class AbstractClassBasedSignatureWriter extends SignatureWriter {
+public abstract class AbstractClassBasedSignatureWriter extends SignatureWriter {
 
     protected CurrentClassController controller;
 
-    public AbstractClassBasedSignatureWriter(CurrentClassController controller) {
+    protected AbstractClassBasedSignatureWriter(CurrentClassController controller) {
         this.controller = controller;
     }
 

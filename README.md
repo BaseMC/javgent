@@ -1,17 +1,18 @@
-# javgent [![Build](https://img.shields.io/github/workflow/status/BaseMC/javgent/Release)](https://github.com/BaseMC/javgent/actions?query=workflow%3A%22Release%22) [![Latest Version](https://img.shields.io/github/v/release/BaseMC/javgent)](https://github.com/BaseMC/javgent/releases)
-Deobfuscates jars (.class-files) with mappings 
+[![Latest Version](https://img.shields.io/github/v/release/BaseMC/javgent)](https://github.com/BaseMC/javgent/releases)
+# javgent
+Best effort deobfuscating jars (.class-files) with mappings 
 
 Mainly written as utility for [Aves](https://github.com/BaseMC/Aves) → Java-Aves-Agent
 
-Uses [ASM](https://asm.ow2.io/) to make obfuscated java files readable (at least it tries it's best :innocent:).
+Uses [ASM](https://asm.ow2.io/) to make obfuscated java files readable
 
 ### [Download](https://github.com/BaseMC/javgent/releases)
 #### Requirements
-* Java 11+ <br/>Download it via [AdoptOpenJDK](https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot) (just follow the instructions)
+* Java 21+ <br/>Download it via [Adoptium](https://adoptium.net/) (just follow the instructions)
 
 ### [Usage](docs/Usage.md)
   
-### [Developing](docs/Developing.md) [![Build Develop](https://img.shields.io/github/workflow/status/BaseMC/javgent/Check%20Build/develop?label=build%20develop)](https://github.com/BaseMC/javgent/actions?query=workflow%3A%22Check+Build%22+branch%3Adevelop)
+### [Developing](docs/Developing.md)
 
 ### [Building](docs/Building.md)
 
