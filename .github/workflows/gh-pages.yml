@@ -26,13 +26,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dependencies-licenses
-          path: target/site
+          path: target/reports
 
       - name: Generate docs/dependencies dir
         run: mkdir -p docs/dependencies
 
       - name: Move built files into docs/dependencies
-        run: mv target/site/* docs/dependencies
+        run: mv target/reports/* docs/dependencies
 
       - name: Rename dependencies.html to index.html
         working-directory: docs/dependencies
@@ -52,3 +52,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
           enable_jekyll: true
+          force_orphan: true
